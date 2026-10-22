@@ -41,7 +41,7 @@ const navItems = [
 type IUser = {
   message: string;
   data: {
-    user: {  
+    user: {
       id: string;
       name: string;
       email: string;
@@ -61,7 +61,7 @@ type NavbarProps = {
 export const Navbar = ({ user }: NavbarProps) => {
   const [isLogout, setIsLogout] = useState(false);
   const router = useRouter();
-  
+
   // ব্যাকএন্ড ডেটা থেকে ইউজার অবজেক্ট ম্যাপ করা হলো
   const profile = user?.data?.user;
 
@@ -80,14 +80,12 @@ export const Navbar = ({ user }: NavbarProps) => {
   const handleLogout = async (action: string) => {
     if (action === "dashboard") {
       const userRole = profile?.role;
-      if (userRole === "USER") {
+      if (userRole === "TENANT") {
         router.push("/dashboard");
-      } else if (userRole === "AUTHOR") {
-        router.push("/author-dashboard");
-      } else if (userRole === "ADMIN") {
-        router.push("/admin-dashboard");
       } else if (userRole === "LANDLORD") {
         router.push("/landlord-dashboard");
+      } else if (userRole === "ADMIN") {
+        router.push("/admin-dashboard");
       }
       return;
     }
