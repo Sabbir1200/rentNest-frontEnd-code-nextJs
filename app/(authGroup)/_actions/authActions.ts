@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import jwt, { JwtPayload } from "jsonwebtoken"
+
 
 export type LoginState = {
   success: boolean;
@@ -48,8 +48,7 @@ export const loginAction = async (prevState: LoginState, formData: FormData): Pr
       };
     }
 
-    // ব্যাকএন্ডের রেসপন্সে সরাসরি `result.accessToken` বা `result.data.accessToken` থাকতে পারে।
-    // তোমার ব্যাকএন্ড কোড অনুযায়ী রেসপন্স স্ট্রাকচার হলো: { user, accessToken, refreshToken }
+   
     const accessToken = result.accessToken || result.data?.accessToken;
     const refreshToken = result.refreshToken || result.data?.refreshToken;
     const userRole = result.user?.role || result.data?.user?.role;
@@ -84,13 +83,13 @@ export const loginAction = async (prevState: LoginState, formData: FormData): Pr
     // রোল অনুযায়ী রিডাইরেক্ট হ্যান্ডেল করা
     if (!userRole) {
       redirect("/register");
-    } else if (userRole === "ADMIN") {
+    } else if (userRole === "TENANT") {
       // redirect("/admin-dashboard");
       redirect("/");
     } else if (userRole === "LANDLORD") {
       // redirect("/landlord-dashboard");
       redirect("/");
-    } else if (userRole === "AUTHOR") {
+    } else if (userRole === "ADMIN") {
       // redirect("/author-dashboard");
       redirect("/");
     } else {
