@@ -3,7 +3,7 @@ import { getMe } from "@/service/getMe";
 import { DashboardDrawer } from "@/components/DashboardDrawer";
 import { Suspense } from "react";
 
-// ১. ডেটা ফেচ করার জন্য একটি আলাদা অ্যাসিনক্রোনাস সাব-কম্পোনেন্ট তৈরি করা হলো
+
 async function DashboardHeaderSection() {
     const user = await getMe();
 

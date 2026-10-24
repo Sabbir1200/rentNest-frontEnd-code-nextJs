@@ -35,3 +35,36 @@ export type ISidebarItem = {
     href: string,
     icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>
 }
+
+export interface Property {
+  id: string;
+  landlordId: string;
+  categoryId: string;
+  title: string;
+  description: string;
+  address: string;
+  city: string;
+  rentAmount: string;
+  isAvailable: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RentalRequest {
+  id: string;
+  tenantId: string;
+  propertyId: string;
+  startDate: string;
+  endDate: string;
+  totalAmount: string;
+  status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'CANCELLED' | 'REJECTED';
+  message: string;
+  createdAt: string;
+  updatedAt: string;
+  property: Property;
+}
+
+export interface ApiResponse {
+  message: string;
+  data: RentalRequest[];
+}

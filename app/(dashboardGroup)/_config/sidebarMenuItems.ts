@@ -1,5 +1,5 @@
 import { ISidebarItem } from "@/lib/types"
-import { FileText, LayoutDashboard } from "lucide-react"
+import { CreditCard, FileText, LayoutDashboard } from "lucide-react"
 import { ADMIN_SIDEBAR_ITEMS } from "./adminSidebarItems"
 
 import { LANDLORD_SIDEBAR_ITEMS } from "./landlordSidebarItems"
@@ -12,9 +12,14 @@ const TENANT_SIDEBAR_ITEMS : ISidebarItem[] = [
         icon : LayoutDashboard
     },
     {
-        label : "My Posts",
-        href : "/dashboard/my-posts",
+        label : "My Rental Req",
+        href : "/dashboard/my-rental",
         icon : FileText
+    },
+    {
+        label : "My payment ",
+        href : "/dashboard/my-payment",
+        icon : CreditCard
     },
 ]
 
